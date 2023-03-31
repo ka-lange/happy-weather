@@ -1,13 +1,63 @@
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
 }
 
 .expandedWeatherData{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid darkcyan;
+    border-radius: 50px;
+    width: 60vw;
 }
-
+.searchLocation{
+    margin: 20px;
+    border: 1px solid darkcyan;
+    border-radius: 50px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+#searchButton{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+}
+#locationInput{
+    height: 30px;
+}
 .extraWeather{
     display: flex;
+}
+.currentWeather{
+    border: 1px solid darkcyan;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+#currentWeatherIcon{
+    height: 100px;
+    width: 100px;
+}
+#currentTemperature{
+    font-size: 30px;
+}
+.hourlyWeather{
+    border: 1px solid darkcyan;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.hourlyWeather span{
+    font-size: 14px;
+    color: gray;
+}
+.hourWeather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

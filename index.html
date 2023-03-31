@@ -11,18 +11,49 @@
     <div class="expandedWeatherData">
         <h1 id="locationName">LOCATION</h1>
         <div class="hamMenu"></div>
-        <input type="text" name value>
-        <button type="button" name="button">getLocation</button>
+        
+        <div class="searchLocation">
+            <input id="locationInput" type="text" name value>
+            <img id="searchButton" src="images/searchIcon.png">
+        </div>
+        
+        <div class="currentWeather">
+            <img id="currentWeatherIcon" src="" alt="">
+            <p id="currentTemperature">0&#176</p>
+        </div>
 
-        <img id="currentWeatherIcon" src="" alt="">
-        <p id="currentTemperature">0&#176</p>
+        <div class="hourlyWeather">
+            <div class="hourWeather">
+                <span>6AM</span>
+                <img id="hour0600img" class="hourWeatherIcon" src="" alt="">
+                <p id="hour0600condition" class="hourWeatherCondition"></p>
+            </div>
+            <div class="hourWeather">
+                <span>9AM</span>
+                <img id="hour0900img" class="hourWeatherIcon" src="" alt="">
+                <p id="hour0900condition" class="hourWeatherCondition"></p>
+            </div>
+            <div class="hourWeather">
+                <span>12PM</span>
+                <img id="hour1200img" class="hourWeatherIcon" src="" alt="">
+                <p id="hour1200condition" class="hourWeatherCondition"></p>
+            </div>
+            <div class="hourWeather">
+                <span>3PM</span>
+                <img id="hour1500img" class="hourWeatherIcon" src="" alt="">
+                <p id="hour1500condition" class="hourWeatherCondition"></p>
+            </div>
+            <div class="hourWeather">
+                <span>6PM</span>
+                <img id="hour1800img" class="hourWeatherIcon" src="" alt="">
+                <p id="hour1800condition" class="hourWeatherCondition"></p>
+            </div>
+        </div>
 
-        <div class="hourlyWeather"></div>
-
-        <div class="extraWeather">
+        <!-- <div class="extraWeather">
             <p id="uvIndex">UV INDEX:</p>
             <p id="rainChance">RAIN:</p>
-        </div>
+        </div> -->
     </div>
     <script src="main.js"></script>
 </body>
