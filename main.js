@@ -4,8 +4,14 @@ let currentTemperature = document.getElementById('currentTemperature')
 let uvIndex = document.getElementById('uvIndex')
 let rainChance = document.getElementById('rainChance')
 let currentWeatherIcon = document.getElementById('currentWeatherIcon')
+let searchSection = document.querySelector('.searchLocation')
 
 getLocationButton.addEventListener('click', getWeather)
+getLocationButton.addEventListener('click', removeSearchBar)
+
+function removeSearchBar(){
+    searchSection.style.display = 'none';
+}
 
 
 function getWeather(){
@@ -36,6 +42,8 @@ function getWeather(){
           document.getElementById('hour1500condition').innerText = Math.floor(data.forecast.forecastday[0].hour[3].temp_f)
           document.getElementById('hour1800condition').innerText = Math.floor(data.forecast.forecastday[0].hour[6].temp_f)
 
+
+          
         })
         .catch(err => {
             console.log(`error ${err}`)
@@ -43,5 +51,5 @@ function getWeather(){
   }
 
 
-
+//background color: if current temperature is certain range, background color is that
 
