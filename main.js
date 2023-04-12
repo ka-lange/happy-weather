@@ -16,7 +16,7 @@ getLocationButton.addEventListener('click', getWeather)
 getLocationButton.addEventListener('click', removeSearchBar)
 getLocationButton.addEventListener('click', chooseIcon)
 
-// upArrow.addEventListener('click', showMoreWeather)
+
 locationName.addEventListener('click', chooseNewLocation)
 
 function removeSearchBar(){
@@ -29,13 +29,9 @@ function chooseNewLocation(){
 }
 
 upArrow.addEventListener('click', () => hourlyWeatherSection.scrollIntoView({
-  
   behavior: 'smooth',
 }));
-// function showMoreWeather(){
-//   hourlyWeatherSection.scrollIntoView();
-  
-// }
+
 
 function getWeather(){
     const location = document.querySelector('input').value

@@ -111,7 +111,13 @@ header{
 }
 
 .hourlyWeather{
-    
+    background-color: rgba(0,0,0, .5);
+}
+.anHourofWeather{
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid black;
+    color: white;
 }
 ::-webkit-scrollbar {
     width: 0px;
