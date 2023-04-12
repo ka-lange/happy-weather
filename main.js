@@ -109,16 +109,18 @@ function getHourlyWeather(){
       .then(data => {
         console.log(data)
         document.getElementById('hour1icon').src = data.forecast.forecastday[0].hour[6].condition.icon
-        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[7].condition.icon
-        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[8].condition.icon
-        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[9].condition.icon
-        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[10].condition.icon
+        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[9].condition.icon
+        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[12].condition.icon
+        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[15].condition.icon
+        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[18].condition.icon
+        document.getElementById('hour6icon').src = data.forecast.forecastday[0].hour[21].condition.icon
 
         document.getElementById('hour1temp').innerText = data.forecast.forecastday[0].hour[6].temp_f
-        document.getElementById('hour2temp').innerText = data.forecast.forecastday[0].hour[7].temp_f
-        document.getElementById('hour3temp').innerText = data.forecast.forecastday[0].hour[8].temp_f
-        document.getElementById('hour4temp').innerText = data.forecast.forecastday[0].hour[9].temp_f
-        document.getElementById('hour5temp').innerText = data.forecast.forecastday[0].hour[10].temp_f
+        document.getElementById('hour2temp').innerText = data.forecast.forecastday[0].hour[9].temp_f
+        document.getElementById('hour3temp').innerText = data.forecast.forecastday[0].hour[12].temp_f
+        document.getElementById('hour4temp').innerText = data.forecast.forecastday[0].hour[15].temp_f
+        document.getElementById('hour5temp').innerText = data.forecast.forecastday[0].hour[18].temp_f
+        document.getElementById('hour6temp').innerText = data.forecast.forecastday[0].hour[21].temp_f
       })
       .catch(err => {
           console.log(`error ${err}`)
