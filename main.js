@@ -52,6 +52,7 @@ function getWeather(){
           let cityName = data.location.name
           let stateName = data.location.region
           locationName.innerText = `${cityName}, ${stateName}`
+          document.getElementById('currentWeatherCondition').innerText = data.current.condition.text
         })
         .catch(err => {
             console.log(`error ${err}`)

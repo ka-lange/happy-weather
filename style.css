@@ -6,6 +6,7 @@ body{
     background-repeat: no-repeat;
     color: black;
     width: 100vw;
+    height: 100vh;
     margin: 0;
 }
 .weatherData{
@@ -74,13 +75,19 @@ header{
 }
 .currentWeather{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 #currentWeatherIcon{
     width: 90vw;
     height: 90vw;
     max-width: 500px;
     max-height: 500px;
+    margin: 0;
+    padding: 0;
+}
+#currentWeatherCondition{
+    margin: 0;
 }
 #currentTemperature{
     margin: 0;
@@ -120,6 +127,7 @@ header{
 .hourlyWeather{
     background-color: rgba(0,0,0, .5);
     min-height: 100vh;
+ 
 }
 .anHourofWeather{
     display: flex;
