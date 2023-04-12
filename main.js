@@ -47,7 +47,7 @@ function getWeather(){
         .then(res => res.json()) // parse response as JSON
         .then(data => {
           console.log(data)
-          currentTemperature.innerText = Math.floor(data.current.temp_f)
+          currentTemperature.innerText = Math.floor(data.current.temp_f) + '\xB0'
           //currentWeatherIcon.src = data.current.condition.icon
           let cityName = data.location.name
           let stateName = data.location.region
@@ -127,12 +127,12 @@ function getHourlyWeather(){
         document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[time+4].condition.icon
         document.getElementById('hour6icon').src = data.forecast.forecastday[0].hour[time+5].condition.icon
 
-        document.getElementById('hour1temp').innerText = Math.round(data.forecast.forecastday[0].hour[time].temp_f)
-        document.getElementById('hour2temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+1].temp_f)
-        document.getElementById('hour3temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+2].temp_f)
-        document.getElementById('hour4temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+3].temp_f)
-        document.getElementById('hour5temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+4].temp_f)
-        document.getElementById('hour6temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+5].temp_f)
+        document.getElementById('hour1temp').innerText = Math.round(data.forecast.forecastday[0].hour[time].temp_f) + '\xB0'
+        document.getElementById('hour2temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+1].temp_f)+ '\xB0'
+        document.getElementById('hour3temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+2].temp_f)+ '\xB0'
+        document.getElementById('hour4temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+3].temp_f)+ '\xB0'
+        document.getElementById('hour5temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+4].temp_f)+ '\xB0'
+        document.getElementById('hour6temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+5].temp_f)+ '\xB0'
 
       if(time>12){time = time-12}
         document.getElementById('hour1hour').innerText = 'now'
