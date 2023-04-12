@@ -6,7 +6,8 @@ let rainChance = document.getElementById('rainChance')
 let currentWeatherIcon = document.getElementById('currentWeatherIcon')
 let searchSection = document.querySelector('.searchLocation')
 let currentWeatherSection = document.querySelector('.currentWeather')
-let expandedWeatherData = document.querySelector('.expandedWeatherData')
+let weatherData = document.querySelector('.weatherData')
+let hourlyWeatherSection = document.querySelector('.hourlyWeather')
 
 let upArrow = document.getElementById('upArrow')
 
@@ -20,12 +21,21 @@ locationName.addEventListener('click', chooseNewLocation)
 
 function removeSearchBar(){
     searchSection.style.display = 'none';
-    expandedWeatherData.style.display = 'flex';
+    weatherData.style.display = 'flex';
 }
 function chooseNewLocation(){
-  expandedWeatherData.style.display = 'none';
+  weatherData.style.display = 'none';
   searchSection.style.display = 'flex';
 }
+
+upArrow.addEventListener('click', () => hourlyWeatherSection.scrollIntoView({
+  
+  behavior: 'smooth',
+}));
+// function showMoreWeather(){
+//   hourlyWeatherSection.scrollIntoView();
+  
+// }
 
 function getWeather(){
     const location = document.querySelector('input').value
