@@ -114,7 +114,7 @@ header{
 .anHourofWeather{
     display: flex;
     justify-content: space-evenly;
-    border-top: 1px solid black;
+    border-top: 2px solid rgba(255,255,255, .1);
     color: white;
 }
 ::-webkit-scrollbar {

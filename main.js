@@ -15,6 +15,7 @@ let upArrow = document.getElementById('upArrow')
 getLocationButton.addEventListener('click', getWeather)
 getLocationButton.addEventListener('click', removeSearchBar)
 getLocationButton.addEventListener('click', chooseIcon)
+getLocationButton.addEventListener('click', getHourlyWeather)
 
 
 locationName.addEventListener('click', chooseNewLocation)
@@ -46,20 +47,6 @@ function getWeather(){
           let cityName = data.location.name
           let stateName = data.location.region
           locationName.innerText = `${cityName}, ${stateName}`
-          
-          //hourlyWeather icons
-          // document.getElementById('hour0600img').src = data.forecast.forecastday[0].hour[6].condition.icon
-          // document.getElementById('hour0900img').src = data.forecast.forecastday[0].hour[9].condition.icon
-          // document.getElementById('hour1200img').src = data.forecast.forecastday[0].hour[12].condition.icon
-          // document.getElementById('hour1500img').src = data.forecast.forecastday[0].hour[15].condition.icon
-          // document.getElementById('hour1800img').src = data.forecast.forecastday[0].hour[18].condition.icon
-
-          // //hourlyWeather Conditions
-          // document.getElementById('hour0600condition').innerText = Math.floor(data.forecast.forecastday[0].hour[6].temp_f)
-          // document.getElementById('hour0900condition').innerText = Math.floor(data.forecast.forecastday[0].hour[9].temp_f)
-          // document.getElementById('hour1200condition').innerText = Math.floor(data.forecast.forecastday[0].hour[12].temp_f)
-          // document.getElementById('hour1500condition').innerText = Math.floor(data.forecast.forecastday[0].hour[3].temp_f)
-          // document.getElementById('hour1800condition').innerText = Math.floor(data.forecast.forecastday[0].hour[6].temp_f)
         })
         .catch(err => {
             console.log(`error ${err}`)
@@ -103,7 +90,7 @@ function chooseIcon(){
             ){
             currentWeatherIcon.src = 'images/icons/cloudy.png'
             } else if (weatherCondition === 1003 
-              || weatherCondition === 1109 
+              || weatherCondition === 1009 
               ){
               currentWeatherIcon.src = 'images/icons/partCloudy.png'
               }
@@ -113,7 +100,45 @@ function chooseIcon(){
        });
       }
 
+function getHourlyWeather(){
+  const location = document.querySelector('input').value
+  const url = `http://api.weatherapi.com/v1/forecast.json?key=b51c2171358f4124ad7174555233003&q=${location}&days=1&aqi=no&alerts=no`
+  
+  fetch(url)
+      .then(res => res.json()) // parse response as JSON
+      .then(data => {
+        console.log(data)
+        document.getElementById('hour1icon').src = data.forecast.forecastday[0].hour[6].condition.icon
+        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[7].condition.icon
+        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[8].condition.icon
+        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[9].condition.icon
+        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[10].condition.icon
 
+        document.getElementById('hour1temp').innerText = data.forecast.forecastday[0].hour[6].temp_f
+        document.getElementById('hour2temp').innerText = data.forecast.forecastday[0].hour[7].temp_f
+        document.getElementById('hour3temp').innerText = data.forecast.forecastday[0].hour[8].temp_f
+        document.getElementById('hour4temp').innerText = data.forecast.forecastday[0].hour[9].temp_f
+        document.getElementById('hour5temp').innerText = data.forecast.forecastday[0].hour[10].temp_f
+      })
+      .catch(err => {
+          console.log(`error ${err}`)
+      });
+}
+
+
+ //hourlyWeather icons
+          // document.getElementById('hour0600img').src = data.forecast.forecastday[0].hour[6].condition.icon
+          // document.getElementById('hour0900img').src = data.forecast.forecastday[0].hour[9].condition.icon
+          // document.getElementById('hour1200img').src = data.forecast.forecastday[0].hour[12].condition.icon
+          // document.getElementById('hour1500img').src = data.forecast.forecastday[0].hour[15].condition.icon
+          // document.getElementById('hour1800img').src = data.forecast.forecastday[0].hour[18].condition.icon
+
+          // //hourlyWeather Conditions
+          // document.getElementById('hour0600condition').innerText = Math.floor(data.forecast.forecastday[0].hour[6].temp_f)
+          // document.getElementById('hour0900condition').innerText = Math.floor(data.forecast.forecastday[0].hour[9].temp_f)
+          // document.getElementById('hour1200condition').innerText = Math.floor(data.forecast.forecastday[0].hour[12].temp_f)
+          // document.getElementById('hour1500condition').innerText = Math.floor(data.forecast.forecastday[0].hour[3].temp_f)
+          // document.getElementById('hour1800condition').innerText = Math.floor(data.forecast.forecastday[0].hour[6].temp_f)
 // function drawCards(){
 //   fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
 //     .then(res => res.json()) // parse response as JSON
