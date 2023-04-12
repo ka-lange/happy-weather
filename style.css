@@ -6,7 +6,6 @@ body{
     background-repeat: no-repeat;
     color: black;
     width: 100vw;
-    height: 100vh;
     margin: 0;
 }
 .weatherData{
@@ -97,8 +96,18 @@ header{
     animation: MoveUpDown 3s linear infinite;
     position: relative;
     bottom: 0;
-    
+    transform: rotate(180deg);
 }
+/* #downArrow{
+    display: flex;
+    width: 10vw;
+    height: 10vw;
+    cursor: pointer;
+    animation: MoveUpDown 3s linear infinite;
+    position: relative;
+    bottom: 0;
+    transform: rotate(0deg);
+} */
 @keyframes MoveUpDown {
     0%, 100% {
         bottom: 0;
@@ -110,14 +119,26 @@ header{
 
 .hourlyWeather{
     background-color: rgba(0,0,0, .5);
+    min-height: 100vh;
 }
 .anHourofWeather{
     display: flex;
-    justify-content: space-evenly;
-    border-top: 2px solid rgba(255,255,255, .1);
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid rgba(255,255,255, .1);
     color: white;
     height: 10vh;
+    font-size: 25px;
+    text-align: center;
 }
+.anHourofWeather>*{
+    width: 33vw;
+}
+.anHourofWeather>img{
+    margin: 10vw;
+}
+
+
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */

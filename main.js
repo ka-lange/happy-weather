@@ -20,6 +20,10 @@ getLocationButton.addEventListener('click', getHourlyWeather)
 
 locationName.addEventListener('click', chooseNewLocation)
 
+
+
+
+
 function removeSearchBar(){
     searchSection.style.display = 'none';
     weatherData.style.display = 'flex';
@@ -32,6 +36,7 @@ function chooseNewLocation(){
 upArrow.addEventListener('click', () => hourlyWeatherSection.scrollIntoView({
   behavior: 'smooth',
 }));
+//upArrow.addEventListener('click', () => upArrow.style.transform = 'rotate(180deg)')
 
 
 function getWeather(){
@@ -99,6 +104,12 @@ function chooseIcon(){
            console.log(`error ${err}`)
        });
       }
+var today = new Date();
+var time = today.getHours();
+console.log(time)
+//if (time > 12){time = time - 12}
+
+
 
 function getHourlyWeather(){
   const location = document.querySelector('input').value
@@ -108,19 +119,27 @@ function getHourlyWeather(){
       .then(res => res.json()) // parse response as JSON
       .then(data => {
         console.log(data)
-        document.getElementById('hour1icon').src = data.forecast.forecastday[0].hour[6].condition.icon
-        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[9].condition.icon
-        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[12].condition.icon
-        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[15].condition.icon
-        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[18].condition.icon
-        document.getElementById('hour6icon').src = data.forecast.forecastday[0].hour[21].condition.icon
+        document.getElementById('hour1icon').src = data.forecast.forecastday[0].hour[time].condition.icon
+        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[time+1].condition.icon
+        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[time+2].condition.icon
+        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[time+3].condition.icon
+        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[time+4].condition.icon
+        document.getElementById('hour6icon').src = data.forecast.forecastday[0].hour[time+5].condition.icon
 
-        document.getElementById('hour1temp').innerText = data.forecast.forecastday[0].hour[6].temp_f
-        document.getElementById('hour2temp').innerText = data.forecast.forecastday[0].hour[9].temp_f
-        document.getElementById('hour3temp').innerText = data.forecast.forecastday[0].hour[12].temp_f
-        document.getElementById('hour4temp').innerText = data.forecast.forecastday[0].hour[15].temp_f
-        document.getElementById('hour5temp').innerText = data.forecast.forecastday[0].hour[18].temp_f
-        document.getElementById('hour6temp').innerText = data.forecast.forecastday[0].hour[21].temp_f
+        document.getElementById('hour1temp').innerText = Math.round(data.forecast.forecastday[0].hour[time].temp_f)
+        document.getElementById('hour2temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+1].temp_f)
+        document.getElementById('hour3temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+2].temp_f)
+        document.getElementById('hour4temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+3].temp_f)
+        document.getElementById('hour5temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+4].temp_f)
+        document.getElementById('hour6temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+5].temp_f)
+
+      if(time>12){time = time-12}
+        document.getElementById('hour1hour').innerText = 'now'
+        document.getElementById('hour2hour').innerText = time + 1
+        document.getElementById('hour3hour').innerText = time + 2
+        document.getElementById('hour4hour').innerText = time + 3
+        document.getElementById('hour5hour').innerText = time + 4
+        document.getElementById('hour6hour').innerText = time + 5
       })
       .catch(err => {
           console.log(`error ${err}`)
@@ -163,4 +182,5 @@ function getHourlyWeather(){
 
 
 //background color: if current temperature is certain range, background color is that
+
 
