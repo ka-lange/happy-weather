@@ -5,26 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="searchLocation">
+        <input id="locationInput" type="text" name value>
+        <img id="searchButton" src="images/happyWeatherLogo.png">
+    </div>
+
     <div class="expandedWeatherData">
+        <!-- <div class="logoSpot">
+            <img id="hwLogo" src="images/happyWeatherLogo.png">
+        </div> -->
         <header>
+            <!-- <img id="searchAgain" src="images/happyWeatherLogo.png"> -->
             <h1 id="locationName"></h1>
         </header>
-        <div class="hamMenu"></div>
-        
-        <div class="searchLocation">
-            <input id="locationInput" type="text" name value>
-            <img id="searchButton" src="images/searchIcon.png">
-        </div>
-        
         <div class="currentWeather">
             <img id="currentWeatherIcon" src="" alt="">
         </div>
         
         <div class="currentTemperature">
             <p id="currentTemperature">0</p>
+        </div>
+
+        <div class="extraWeather">
+            <img id="upArrow" src="images/up-arrows.png"/>
         </div>
 
         

@@ -5,15 +5,27 @@ let uvIndex = document.getElementById('uvIndex')
 let rainChance = document.getElementById('rainChance')
 let currentWeatherIcon = document.getElementById('currentWeatherIcon')
 let searchSection = document.querySelector('.searchLocation')
+let currentWeatherSection = document.querySelector('.currentWeather')
+let expandedWeatherData = document.querySelector('.expandedWeatherData')
+
+let upArrow = document.getElementById('upArrow')
+
 
 getLocationButton.addEventListener('click', getWeather)
 getLocationButton.addEventListener('click', removeSearchBar)
 getLocationButton.addEventListener('click', chooseIcon)
 
+// upArrow.addEventListener('click', showMoreWeather)
+locationName.addEventListener('click', chooseNewLocation)
+
 function removeSearchBar(){
     searchSection.style.display = 'none';
+    expandedWeatherData.style.display = 'flex';
 }
-
+function chooseNewLocation(){
+  expandedWeatherData.style.display = 'none';
+  searchSection.style.display = 'flex';
+}
 
 function getWeather(){
     const location = document.querySelector('input').value
@@ -63,9 +75,8 @@ function chooseIcon(){
             || weatherCondition === 1153
             || weatherCondition === 1180 
             || weatherCondition === 1183
-            || weatherCondition === 1003
             ){
-            currentWeatherIcon.src = 'images/icons/partCloudy.png'
+            currentWeatherIcon.src = 'images/icons/sunrain.png'
           } else if (weatherCondition === 1087 
             || weatherCondition === 1273 
             || weatherCondition === 1276
@@ -83,10 +94,13 @@ function chooseIcon(){
           ){
           currentWeatherIcon.src = 'images/icons/rainy.png'
           } else if (weatherCondition === 1030 
-            
             ){
             currentWeatherIcon.src = 'images/icons/cloudy.png'
-            }
+            } else if (weatherCondition === 1003 
+              || weatherCondition === 1109 
+              ){
+              currentWeatherIcon.src = 'images/icons/partCloudy.png'
+              }
         })
        .catch(err => {
            console.log(`error ${err}`)
