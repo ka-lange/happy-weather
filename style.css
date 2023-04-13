@@ -7,7 +7,7 @@ body{
     color: black;
     width: 100vw;
     height: 100vh;
-    margin: 0;
+    margin: 0px;
 }
 .weatherData{
     display: none;
@@ -64,7 +64,7 @@ header{
 }
 
 #locationName{
-    font-size: 12vw;
+    font-size: 40px;
     cursor: pointer;
 }
 
@@ -81,8 +81,8 @@ header{
 #currentWeatherIcon{
     width: 90vw;
     height: 90vw;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 400px;
+    max-height: 400px;
     margin: 0;
     padding: 0;
 }
@@ -99,6 +99,8 @@ header{
     display: flex;
     width: 10vw;
     height: 10vw;
+    max-width: 50px;
+    max-height: 50px;
     cursor: pointer;
     animation: MoveUpDown 3s linear infinite;
     position: relative;
@@ -128,6 +130,7 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     min-height: 100vh;
     margin: 2.5vw;
 }
@@ -141,14 +144,17 @@ header{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 1000px;
 }
 .forecastSectionSplit{
     display: flex;
     justify-content: space-between;
+    max-width: 1000px;
 }
 .forecastSectionHalf{
     height: 20vh;
-    width: 45vw;  
+    width: 40vw;
+    
 }
 .moreWeatherHeading{
     margin: 0;
@@ -162,6 +168,7 @@ header{
     white-space: nowrap;
     display: flex;
     margin-top: 2.5vh;
+    max-width: 1000px;
 }
 .anHourofWeather{
     display: flex;
@@ -180,6 +187,8 @@ header{
 .anHourImg{
     height: 25vw;
     width: 25vw;
+    max-height: 100px;
+    max-width: 100px;
     filter: invert(1);
     margin-top: 1vh;
 }
@@ -195,7 +204,7 @@ header{
     transform: translate(-50%, -50%);
 }
 .weatherNumeric{
-    font-size: 10vw;
+    font-size: 40px;
     margin: 0;
     margin-top: 2.5vh;
 }
