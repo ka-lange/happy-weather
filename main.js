@@ -7,7 +7,7 @@ let currentWeatherIcon = document.getElementById('currentWeatherIcon')
 let searchSection = document.querySelector('.searchLocation')
 let currentWeatherSection = document.querySelector('.currentWeather')
 let weatherData = document.querySelector('.weatherData')
-let hourlyWeatherSection = document.querySelector('.hourlyWeather')
+let hourlyWeatherSection = document.querySelector('.moreWeatherData')
 
 
 
@@ -125,19 +125,31 @@ function getHourlyWeather(){
       .then(res => res.json()) // parse response as JSON
       .then(data => {
         console.log(data)
-        document.getElementById('hour1icon').src = data.forecast.forecastday[0].hour[6].condition.icon
-        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[9].condition.icon
-        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[12].condition.icon
-        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[15].condition.icon
-        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[18].condition.icon
-        document.getElementById('hour6icon').src = data.forecast.forecastday[0].hour[21].condition.icon
+        document.getElementById('hour1icon').src = data.forecast.forecastday[0].hour[7].condition.icon
+        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[8].condition.icon
+        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[9].condition.icon
+        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[10].condition.icon
+        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[11].condition.icon
+        document.getElementById('hour6icon').src = data.forecast.forecastday[0].hour[12].condition.icon
+        document.getElementById('hour7icon').src = data.forecast.forecastday[0].hour[13].condition.icon
+        document.getElementById('hour8icon').src = data.forecast.forecastday[0].hour[14].condition.icon
+        document.getElementById('hour9icon').src = data.forecast.forecastday[0].hour[15].condition.icon
+        document.getElementById('hour10icon').src = data.forecast.forecastday[0].hour[16].condition.icon
+        document.getElementById('hour11icon').src = data.forecast.forecastday[0].hour[17].condition.icon
+        document.getElementById('hour12icon').src = data.forecast.forecastday[0].hour[18].condition.icon
 
-        document.getElementById('hour1temp').innerText = Math.round(data.forecast.forecastday[0].hour[6].temp_f) + '\xB0'
-        document.getElementById('hour2temp').innerText = Math.round(data.forecast.forecastday[0].hour[9].temp_f)+ '\xB0'
-        document.getElementById('hour3temp').innerText = Math.round(data.forecast.forecastday[0].hour[12].temp_f)+ '\xB0'
-        document.getElementById('hour4temp').innerText = Math.round(data.forecast.forecastday[0].hour[15].temp_f)+ '\xB0'
-        document.getElementById('hour5temp').innerText = Math.round(data.forecast.forecastday[0].hour[18].temp_f)+ '\xB0'
-        document.getElementById('hour6temp').innerText = Math.round(data.forecast.forecastday[0].hour[21].temp_f)+ '\xB0'
+        document.getElementById('hour1temp').innerText = Math.round(data.forecast.forecastday[0].hour[7].temp_f) + '\xB0'
+        document.getElementById('hour2temp').innerText = Math.round(data.forecast.forecastday[0].hour[8].temp_f)+ '\xB0'
+        document.getElementById('hour3temp').innerText = Math.round(data.forecast.forecastday[0].hour[9].temp_f)+ '\xB0'
+        document.getElementById('hour4temp').innerText = Math.round(data.forecast.forecastday[0].hour[10].temp_f)+ '\xB0'
+        document.getElementById('hour5temp').innerText = Math.round(data.forecast.forecastday[0].hour[11].temp_f)+ '\xB0'
+        document.getElementById('hour6temp').innerText = Math.round(data.forecast.forecastday[0].hour[12].temp_f)+ '\xB0'
+        document.getElementById('hour7temp').innerText = Math.round(data.forecast.forecastday[0].hour[13].temp_f) + '\xB0'
+        document.getElementById('hour8temp').innerText = Math.round(data.forecast.forecastday[0].hour[14].temp_f)+ '\xB0'
+        document.getElementById('hour9temp').innerText = Math.round(data.forecast.forecastday[0].hour[15].temp_f)+ '\xB0'
+        document.getElementById('hour10temp').innerText = Math.round(data.forecast.forecastday[0].hour[16].temp_f)+ '\xB0'
+        document.getElementById('hour11temp').innerText = Math.round(data.forecast.forecastday[0].hour[17].temp_f)+ '\xB0'
+        document.getElementById('hour12temp').innerText = Math.round(data.forecast.forecastday[0].hour[18].temp_f)+ '\xB0'
 
       // if(time>12){time = time-12}
       //   document.getElementById('hour1hour').innerText = 'now'

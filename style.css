@@ -123,7 +123,86 @@ header{
         bottom: 10px;
     }
 }
-.weatherSection{
+
+.moreWeatherData{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 2.5vw;
+}
+.forecastSection, .forecastSectionHalf{
+    height: 30vh;
+    margin-top: 2.5vh;
+    background-color: rgba(0,0,0, .5);
+    color: white;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.forecastSectionSplit{
+    display: flex;
+    justify-content: space-between;
+}
+.forecastSectionHalf{
+    height: 20vh;
+    width: 45vw;  
+}
+.moreWeatherHeading{
+    margin: 0;
+    font-weight: 400;
+}
+.scrollingWeatherData{
+    height: 20vh;
+    width: 95vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: flex;
+    margin-top: 2.5vh;
+}
+.anHourofWeather{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid rgba(255,255,255, .1);
+    min-width: 25vw;
+}
+.anHourHeading{
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    font-size: 20px;
+}
+.anHourImg{
+    height: 25vw;
+    width: 25vw;
+    filter: invert(1);
+    margin-top: 1vh;
+}
+.dropChance{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.rainPercentageText{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.weatherNumeric{
+    font-size: 10vw;
+    margin: 0;
+    margin-top: 2.5vh;
+}
+
+
+
+/* .weatherSection{
     display: flex;
     flex-direction: column;
     background-color: rgba(0,0,0, .5);
@@ -131,9 +210,9 @@ header{
     border-radius: 50px;
     margin: 2.5vh;
     text-align: center;
-    font-size: 40px;
-}
-.hourlyWeather{
+    font-size: 20px;
+} */
+/* .hourlyWeather{
     display: flex;
     align-items: center;
     overflow-x: auto;
@@ -176,11 +255,11 @@ header{
     flex-direction: column;
     align-items: center;
     color: white;
-    font-size: 40px;
-}
-#uvIndex,  #humidity{
-    font-size: 100px;
-}
+    font-size: 20px;
+} */
+/* #uvIndex,  #humidity{
+    font-size: 50px;
+} */
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
