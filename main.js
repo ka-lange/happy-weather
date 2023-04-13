@@ -2,12 +2,14 @@ let locationName = document.getElementById('locationName')
 let getLocationButton = document.getElementById('searchButton')
 let currentTemperature = document.getElementById('currentTemperature')
 let uvIndex = document.getElementById('uvIndex')
-let rainChance = document.getElementById('rainChance')
+let humidity = document.getElementById('humidity')
 let currentWeatherIcon = document.getElementById('currentWeatherIcon')
 let searchSection = document.querySelector('.searchLocation')
 let currentWeatherSection = document.querySelector('.currentWeather')
 let weatherData = document.querySelector('.weatherData')
 let hourlyWeatherSection = document.querySelector('.hourlyWeather')
+
+
 
 let upArrow = document.getElementById('upArrow')
 
@@ -41,7 +43,7 @@ upArrow.addEventListener('click', () => hourlyWeatherSection.scrollIntoView({
 
 function getWeather(){
     const location = document.querySelector('input').value
-    const url = `http://api.weatherapi.com/v1/forecast.json?key=b51c2171358f4124ad7174555233003&q=${location}&days=1&aqi=no&alerts=no`
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=b51c2171358f4124ad7174555233003&q=${location}&days=1&aqi=no&alerts=no`
     
     fetch(url)
         .then(res => res.json()) // parse response as JSON
@@ -53,6 +55,9 @@ function getWeather(){
           let stateName = data.location.region
           locationName.innerText = `${cityName}, ${stateName}`
           document.getElementById('currentWeatherCondition').innerText = data.current.condition.text
+
+          uvIndex.innerText = data.current.uv
+          humidity.innerText = data.current.humidity
         })
         .catch(err => {
             console.log(`error ${err}`)
@@ -61,7 +66,7 @@ function getWeather(){
 
 function chooseIcon(){
   const location = document.querySelector('input').value
-  fetch(`http://api.weatherapi.com/v1/forecast.json?key=b51c2171358f4124ad7174555233003&q=${location}&days=1&aqi=no&alerts=no`)
+  fetch(`https://api.weatherapi.com/v1/forecast.json?key=b51c2171358f4124ad7174555233003&q=${location}&days=1&aqi=no&alerts=no`)
        .then(res => res.json()) // parse response as JSON
        .then(data => {
           console.log(data)
@@ -114,71 +119,46 @@ console.log(time)
 
 function getHourlyWeather(){
   const location = document.querySelector('input').value
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=b51c2171358f4124ad7174555233003&q=${location}&days=1&aqi=no&alerts=no`
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=b51c2171358f4124ad7174555233003&q=${location}&days=1&aqi=no&alerts=no`
   
   fetch(url)
       .then(res => res.json()) // parse response as JSON
       .then(data => {
         console.log(data)
-        document.getElementById('hour1icon').src = data.forecast.forecastday[0].hour[time].condition.icon
-        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[time+1].condition.icon
-        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[time+2].condition.icon
-        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[time+3].condition.icon
-        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[time+4].condition.icon
-        document.getElementById('hour6icon').src = data.forecast.forecastday[0].hour[time+5].condition.icon
+        document.getElementById('hour1icon').src = data.forecast.forecastday[0].hour[6].condition.icon
+        document.getElementById('hour2icon').src = data.forecast.forecastday[0].hour[9].condition.icon
+        document.getElementById('hour3icon').src = data.forecast.forecastday[0].hour[12].condition.icon
+        document.getElementById('hour4icon').src = data.forecast.forecastday[0].hour[15].condition.icon
+        document.getElementById('hour5icon').src = data.forecast.forecastday[0].hour[18].condition.icon
+        document.getElementById('hour6icon').src = data.forecast.forecastday[0].hour[21].condition.icon
 
-        document.getElementById('hour1temp').innerText = Math.round(data.forecast.forecastday[0].hour[time].temp_f) + '\xB0'
-        document.getElementById('hour2temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+1].temp_f)+ '\xB0'
-        document.getElementById('hour3temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+2].temp_f)+ '\xB0'
-        document.getElementById('hour4temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+3].temp_f)+ '\xB0'
-        document.getElementById('hour5temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+4].temp_f)+ '\xB0'
-        document.getElementById('hour6temp').innerText = Math.round(data.forecast.forecastday[0].hour[time+5].temp_f)+ '\xB0'
+        document.getElementById('hour1temp').innerText = Math.round(data.forecast.forecastday[0].hour[6].temp_f) + '\xB0'
+        document.getElementById('hour2temp').innerText = Math.round(data.forecast.forecastday[0].hour[9].temp_f)+ '\xB0'
+        document.getElementById('hour3temp').innerText = Math.round(data.forecast.forecastday[0].hour[12].temp_f)+ '\xB0'
+        document.getElementById('hour4temp').innerText = Math.round(data.forecast.forecastday[0].hour[15].temp_f)+ '\xB0'
+        document.getElementById('hour5temp').innerText = Math.round(data.forecast.forecastday[0].hour[18].temp_f)+ '\xB0'
+        document.getElementById('hour6temp').innerText = Math.round(data.forecast.forecastday[0].hour[21].temp_f)+ '\xB0'
 
-      if(time>12){time = time-12}
-        document.getElementById('hour1hour').innerText = 'now'
-        document.getElementById('hour2hour').innerText = time + 1
-        document.getElementById('hour3hour').innerText = time + 2
-        document.getElementById('hour4hour').innerText = time + 3
-        document.getElementById('hour5hour').innerText = time + 4
-        document.getElementById('hour6hour').innerText = time + 5
+      // if(time>12){time = time-12}
+      //   document.getElementById('hour1hour').innerText = 'now'
+      //   document.getElementById('hour2hour').innerText = time + 1
+      //   document.getElementById('hour3hour').innerText = time + 2
+      //   document.getElementById('hour4hour').innerText = time + 3
+      //   document.getElementById('hour5hour').innerText = time + 4
+      //   document.getElementById('hour6hour').innerText = time + 5
+
+        document.getElementById('hour1rain').innerText = data.forecast.forecastday[0].hour[6].chance_of_rain + '%'
+        document.getElementById('hour2rain').innerText = data.forecast.forecastday[0].hour[9].chance_of_rain + '%'
+        document.getElementById('hour3rain').innerText = data.forecast.forecastday[0].hour[12].chance_of_rain + '%'
+        document.getElementById('hour4rain').innerText = data.forecast.forecastday[0].hour[15].chance_of_rain + '%'
+        document.getElementById('hour5rain').innerText = data.forecast.forecastday[0].hour[18].chance_of_rain + '%'
+        document.getElementById('hour6rain').innerText = data.forecast.forecastday[0].hour[21].chance_of_rain + '%'
       })
       .catch(err => {
           console.log(`error ${err}`)
       });
 }
 
-
- //hourlyWeather icons
-          // document.getElementById('hour0600img').src = data.forecast.forecastday[0].hour[6].condition.icon
-          // document.getElementById('hour0900img').src = data.forecast.forecastday[0].hour[9].condition.icon
-          // document.getElementById('hour1200img').src = data.forecast.forecastday[0].hour[12].condition.icon
-          // document.getElementById('hour1500img').src = data.forecast.forecastday[0].hour[15].condition.icon
-          // document.getElementById('hour1800img').src = data.forecast.forecastday[0].hour[18].condition.icon
-
-          // //hourlyWeather Conditions
-          // document.getElementById('hour0600condition').innerText = Math.floor(data.forecast.forecastday[0].hour[6].temp_f)
-          // document.getElementById('hour0900condition').innerText = Math.floor(data.forecast.forecastday[0].hour[9].temp_f)
-          // document.getElementById('hour1200condition').innerText = Math.floor(data.forecast.forecastday[0].hour[12].temp_f)
-          // document.getElementById('hour1500condition').innerText = Math.floor(data.forecast.forecastday[0].hour[3].temp_f)
-          // document.getElementById('hour1800condition').innerText = Math.floor(data.forecast.forecastday[0].hour[6].temp_f)
-// function drawCards(){
-//   fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
-//     .then(res => res.json()) // parse response as JSON
-//     .then(data => {
-//       console.log(data)
-//       player1card.src = data.cards[0].image
-//       player2card.src = data.cards[1].image
-
-//       let player1value = strToValue(data.cards[0].value);
-//       let player2value = strToValue(data.cards[1].value);
-//       if(player1value > player2value){winner.innerText = 'Player 1 Wins'
-//       } else if(player1value < player2value){winner.innerText = 'Player 2 Wins'
-//       } else {winner.innerText = 'TIE'}
-//     })
-//     .catch(err => {
-//         console.log(`error ${err}`)
-//     });
-// }
 
 
 

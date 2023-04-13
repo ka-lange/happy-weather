@@ -123,19 +123,30 @@ header{
         bottom: 10px;
     }
 }
-
-.hourlyWeather{
+.weatherSection{
+    display: flex;
+    flex-direction: column;
     background-color: rgba(0,0,0, .5);
-    min-height: 100vh;
- 
+    min-height: 30vh;
+    border-radius: 50px;
+    margin: 2.5vh;
+    text-align: center;
+    font-size: 40px;
+}
+.hourlyWeather{
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    min-height: 30vh;
 }
 .anHourofWeather{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border-bottom: 2px solid rgba(255,255,255, .1);
+    border-right: 2px solid rgba(255,255,255, .1);
     color: white;
-    height: 10vh;
     font-size: 25px;
     text-align: center;
 }
@@ -143,10 +154,33 @@ header{
     width: 33vw;
 }
 .anHourofWeather>img{
-    margin: 10vw;
+    height: 10vh;
+    width: 10vh;
 }
 
-
+.rainChance{
+    
+}
+.moreWeather{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.moreWeatherSection{
+    background-color: rgba(0,0,0, .5);
+    min-height: 25vh;
+    width: 47.5vw;
+    border-radius: 50px;
+    margin: 2.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+}
+#uvIndex,  #humidity{
+    font-size: 100px;
+}
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
