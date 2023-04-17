@@ -159,12 +159,18 @@ function getHourlyWeather(){
       //   document.getElementById('hour5hour').innerText = time + 4
       //   document.getElementById('hour6hour').innerText = time + 5
 
-        document.getElementById('hour1rain').innerText = data.forecast.forecastday[0].hour[6].chance_of_rain + '%'
-        document.getElementById('hour2rain').innerText = data.forecast.forecastday[0].hour[9].chance_of_rain + '%'
-        document.getElementById('hour3rain').innerText = data.forecast.forecastday[0].hour[12].chance_of_rain + '%'
-        document.getElementById('hour4rain').innerText = data.forecast.forecastday[0].hour[15].chance_of_rain + '%'
-        document.getElementById('hour5rain').innerText = data.forecast.forecastday[0].hour[18].chance_of_rain + '%'
-        document.getElementById('hour6rain').innerText = data.forecast.forecastday[0].hour[21].chance_of_rain + '%'
+        document.getElementById('hour1rain').innerText = data.forecast.forecastday[0].hour[7].chance_of_rain + '%'
+        document.getElementById('hour2rain').innerText = data.forecast.forecastday[0].hour[8].chance_of_rain + '%'
+        document.getElementById('hour3rain').innerText = data.forecast.forecastday[0].hour[9].chance_of_rain + '%'
+        document.getElementById('hour4rain').innerText = data.forecast.forecastday[0].hour[10].chance_of_rain + '%'
+        document.getElementById('hour5rain').innerText = data.forecast.forecastday[0].hour[11].chance_of_rain + '%'
+        document.getElementById('hour6rain').innerText = data.forecast.forecastday[0].hour[12].chance_of_rain + '%'
+        document.getElementById('hour7rain').innerText = data.forecast.forecastday[0].hour[13].chance_of_rain + '%'
+        document.getElementById('hour8rain').innerText = data.forecast.forecastday[0].hour[14].chance_of_rain + '%'
+        document.getElementById('hour9rain').innerText = data.forecast.forecastday[0].hour[15].chance_of_rain + '%'
+        document.getElementById('hour10rain').innerText = data.forecast.forecastday[0].hour[16].chance_of_rain + '%'
+        document.getElementById('hour11rain').innerText = data.forecast.forecastday[0].hour[17].chance_of_rain + '%'
+        document.getElementById('hour12rain').innerText = data.forecast.forecastday[0].hour[18].chance_of_rain + '%'
       })
       .catch(err => {
           console.log(`error ${err}`)
