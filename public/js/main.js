@@ -1,4 +1,4 @@
-
+const logoButton = document.getElementById('logoButton');
 const searchButton = document.getElementById('searchButton');
 const hourlyTempSection = document.getElementById('hourlyTemp');
 const searchBar = document.getElementById('searchBar')
@@ -6,7 +6,7 @@ const frontPage = document.getElementById('frontPage')
 const secondPage = document.getElementById('secondPage')
 const downArrow = document.getElementById('downArrow')
 const startPage = document.getElementById('startPage')
-const recentLocations = document.getElementById('recentLocations')
+const searchLocation = document.getElementById('searchLocation')
 
 const locationName = document.getElementById('locationName')
 const currentTemperature = document.getElementById('currentTemperature')
@@ -23,11 +23,14 @@ const moreThree = document.getElementById('moreThree')
 const moreFour = document.getElementById('moreFour')
 
 
-
+logoButton.addEventListener('click', (e)=>{
+    window.location.reload();
+})
 
 searchButton.addEventListener('click', (e)=>{
     e.preventDefault();
     startPage.classList.add('hidden')
+    searchBar.classList.add('hidden')
     frontPage.classList.remove('hidden')
     secondPage.classList.remove('hidden')
     getWeather()
@@ -44,7 +47,7 @@ async function getWeather(){
         .then(res => res.json()) // parse response as JSON
         .then(data => {
             console.log(data)
-            searchBar.style.visibility = 'hidden'
+            
             locationName.innerText = data.location.name + ", " + data.location.region
             currentTemperature.innerText = Math.floor(data.current.temp_f) + '\xB0'
             currentWeatherCondition.innerText = data.current.condition.text
@@ -152,7 +155,7 @@ function hourlyWeather(data){
     for(let i=0; i<(24-time); i++){
         // console.log(data.forecast.forecastday[0].hour[(time+i)].time)
         var divElement = document.createElement("div");
-        divElement.classList.add('flex', 'flex-col', 'items-center', 'min-w-max', 'border-r')
+        divElement.classList.add('flex', 'flex-col', 'items-center', 'min-w-max', 'border-r', 'p-5')
 
         var hourTime = document.createElement("p");
         var hour = parseInt((data.forecast.forecastday[0].hour[time+i].time).slice(11))
@@ -165,7 +168,7 @@ function hourlyWeather(data){
         hourTime.appendChild(timeNode)
 
         var hourIcon = document.createElement("img");
-        hourIcon.classList.add('w-20')
+        hourIcon.classList.add('w-10', 'md:w-20')
         hourIcon.src = data.forecast.forecastday[0].hour[time+i].condition.icon
 
         //get the hourly temp
@@ -179,7 +182,7 @@ function hourlyWeather(data){
     for (let i=0; i<(time); i++){
         //console.log(data.forecast.forecastday[1].hour[i].time)
         var divElement = document.createElement("div");
-        divElement.classList.add('flex', 'flex-col', 'items-center', 'min-w-max', 'border-r')
+        divElement.classList.add('flex', 'flex-col', 'items-center', 'min-w-max', 'border-r', 'p-5')
 
         var hourTime = document.createElement("p");
         var hour = parseInt((data.forecast.forecastday[1].hour[i].time).slice(11))
@@ -192,7 +195,7 @@ function hourlyWeather(data){
         hourTime.appendChild(timeNode)
 
         var hourIcon = document.createElement("img");
-        hourIcon.classList.add('w-20')
+        hourIcon.classList.add('w-10', 'md:w-20')
         hourIcon.src = data.forecast.forecastday[1].hour[i].condition.icon
 
         //get the hourly temp
@@ -209,7 +212,7 @@ function hourlyWeather(data){
 function forecast(data){
     for(let i=0; i<3; i++){
         var divElement = document.createElement("div");
-        divElement.classList.add( 'p-2', 'flex', 'items-center', 'border-b')
+        divElement.classList.add( 'p-1', 'md:pb-8', 'flex', 'items-center', 'justify-evenly', 'border-b')
         // var dayDiv = document.createElement("div");
         // dayDiv.classList.add('flex', 'justify-between', 'p-2')
         var conditionDiv = document.createElement("div");
@@ -230,21 +233,22 @@ function forecast(data){
         
 
         var forecastIcon = document.createElement("img");
+        forecastIcon.classList.add('w-10', 'md:w-20')
         forecastIcon.src = data.forecast.forecastday[i].day.condition.icon
 
-        var forecastCondition = document.createElement("p");
-        var condition = document.createTextNode((data.forecast.forecastday[i].day.condition.text));
-        forecastCondition.appendChild(condition)
+        // var forecastCondition = document.createElement("p");
+        // var condition = document.createTextNode((data.forecast.forecastday[i].day.condition.text));
+        // forecastCondition.appendChild(condition)
         
         var forecastHighLowTemp = document.createElement("span");
         var highLowTemps = document.createTextNode(
-            'L: ' + (data.forecast.forecastday[i].day.mintemp_f)+ '\xB0' + '  ' +
-            'H: ' +(data.forecast.forecastday[i].day.maxtemp_f)+ '\xB0'
+            (data.forecast.forecastday[i].day.mintemp_f)+ '\xB0' +
+            ' - ' +(data.forecast.forecastday[i].day.maxtemp_f)+ '\xB0'
             );
         
         forecastHighLowTemp.appendChild(highLowTemps)
 
-        conditionDiv.append(forecastCondition, forecastHighLowTemp)
+        conditionDiv.append(forecastHighLowTemp)
         conditionDiv.classList.add( 'text-center')
         divElement.append(day, forecastIcon, conditionDiv)
         threeDayForecast.append(divElement)
@@ -254,8 +258,8 @@ function forecast(data){
 
 function moreWeather(data){
     var uv = document.createTextNode(data.current.uv);
-    var fl = document.createTextNode(data.current.feelslike_f);
-    var precip = document.createTextNode(data.current.precip_in);
+    var fl = document.createTextNode((data.current.feelslike_f) + '\xB0');
+    var precip = document.createTextNode((data.forecast.forecastday[0].day.daily_chance_of_rain) + '%');
     var hum = document.createTextNode(data.current.humidity);
     moreOne.appendChild(fl)
     moreTwo.appendChild(uv)
