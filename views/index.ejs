@@ -13,216 +13,72 @@
     <link rel="stylesheet" href="public/css/normalize.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <!-- <script src="/services/weatherService.js" type="text/javascript"></script> -->
 </head>
 <body>
 
-    <div class="container-xl m-0 border-4 h-screen w-full flex flex-col items-center justify-center">
-        <form action="/" method="GET" class="w-6/12 flex">
-            <input type="text" class="w-full h-12 p-2 border-4 border-r-0 rounded-full rounded-r-none text-pink-900 border-pink-900">
-            <button type="submit" class="border-4 border-pink-900 bg-pink-900 hover:bg-blue-50 text-white hover:text-pink-900 py-2 px-4 rounded-full rounded-l-none">search</button>
+    <div id="startPage" class="container-xl m-0 h-screen w-full flex flex-col items-center justify-center">
+        <div class="flex flex-col md:flex-row justify-center items-center">
+            <h1 class="md:text-6xl text-5xl text-center font-bold">HAPPY WEATHER</h1>
+            <img class="w-28" src="public/images/happyWeatherLogo.png">
+        </div>
+        <form id="searchBar" action="" method="" class="w-3/4 md:w-1/2 flex m-6">
+            <input id="searchLocation" type="text" name="location" class="w-full h-12 p-2 border border-r-0 rounded-full rounded-r-none .bg-transparent" style="background: transparent;">
+            <button id="searchButton" type="submit" class="border .bg-transparent py-2 px-4 rounded-full rounded-l-none">search</button>
         </form>
     </div>
 
-<div class="container-xl h-screen p-20 border-4 grid grid-cols-3 grid-rows-4 gap-4">
+    <div id="frontPage" class="container-xl m-0 h-screen w-full m-0 flex flex-col items-center justify-center hidden">
+        <h1 id="locationName" class="text-4xl"></h1>
+        <p id="currentTemperature" class="text-6xl p-4"></p>
+        <p id="currentWeatherCondition" class="text-2xl"></p>
+        <img id="currentWeatherIcon" class="md:max-w-lg" src=""> 
+        <svg id="downArrow" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
+        </svg>
+    </div>
+
+<div id="secondPage" class="container-xl h-screen p-10 grid grid-cols-4 md:grid-rows-3 grid-rows-6 gap-4 hidden">
     <!-- HOURLY TEMP -->
-    <div class="border-4 col-span-2 row-span-2 col-start-2 row-start-1">
-        <h1 class="text-xl text-center">Hourly Temperature</h1>
+    <div class="border col-span-4 row-span-2 md:row-span-1 rounded-md bg-white bg-opacity-10">
+        <h1 class="text-xl text-center bg-white bg-opacity-20">Hourly Temperature</h1>
+        <div id="hourlyTemp" class="container flex items-center overflow-x-scroll h-4/5"></div>
+    </div>
+    <!-- 3 DAY FORECAST -->
+    <div class="border md:col-span-2 col-span-4 row-span-2 row-start-3 md:row-start-2 rounded-md bg-white bg-opacity-10">
+        <h1 class="text-xl text-center bg-white bg-opacity-20">3 day forecast</h1>
+        <div id="threeDayForecast" class="container h-5/6 flex flex-col overflow-scroll">
+            
+        </div>
     </div>
     <!-- USER 1 -->
-    <div class="border-4 col-start-2 row-start-3">
-        <h1 class="text-xl text-center">User 1</h1>
+    
+    <div class="border md:col-start-3 md:row-start-2 md:col-span-1 col-span-2 row-start-5 flex flex-col justify-center rounded-md bg-white bg-opacity-20">
+        <h1 class="text-xl text-center pb-2">Feels Like</h1>
+        <p id="moreOne" class="text-center text-4xl"></p>
     </div>
     <!-- USER 2 -->
-    <div class="border-4 col-start-3 row-start-3">
-        <h1 class="text-xl text-center">User 2</h1>
+    <div class="border md:col-start-4 md:row-start-2 md:col-span-1 col-span-2 col-start-3 row-start-5 flex flex-col justify-center rounded-md bg-white bg-opacity-20">
+        <h1 class="text-xl text-center pb-2">UV</h1>
+        <p id="moreTwo" class="text-center text-4xl"></p>
     </div>
     <!-- USER 3 -->
-    <div class="border-4 col-start-2 row-start-4">
-        <h1 class="text-xl text-center">User 3</h1>
+    <div class="border md:col-start-3 md:row-start-3 md:col-span-1 col-span-2 row-start-6 flex flex-col justify-center rounded-md bg-white bg-opacity-20">
+        <h1 class="text-xl text-center pb-2">Humidity</h1>
+        <p id="moreThree" class="text-center text-4xl"></p>
     </div>
     <!-- USER 4 -->
-    <div class="border-4 col-start-3 row-start-4">
-        <h1 class="text-xl text-center">User 4</h1>
-    </div>
-    <!-- 10 DAY FORECAST -->
-    <div class="border-4 row-span-4 col-start-1 row-start-1">
-        <h1 class="text-xl text-center">10 day forecast</h1>
-    </div>
-</div>
-
-
-    <div>
-        <input id="locationInput" type="text" name value>
-        <img id="searchButton" >
-    </div>
-    <div>
-        <div>
-            <header>
-                <h1 id="locationName"></h1>
-            </header>
-            <div>
-                <p id="currentTemperature"></p>
-            </div>
-            <div>
-                <p id="currentWeatherCondition"></p>
-                <img id="currentWeatherIcon" src="" alt="">
-            </div>
-            <div>
-                
-            </div>
-        </div>
-
-
-        <section>
-            <section >
-                <h1 >Hourly Forecast</h1>
-                <div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour1hour">7am</h2>
-                        <img id="hour1icon" src="">
-                        <p class="anHourHeading" id="hour1temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour2hour">8am</h2>
-                        <img id="hour2icon" src="">
-                        <p class="anHourHeading" id="hour2temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour3hour">9am</h2>
-                        <img id="hour3icon" src="">
-                        <p class="anHourHeading" id="hour3temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour4hour">10am</h2>
-                        <img id="hour4icon" src="">
-                        <p class="anHourHeading" id="hour4temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour5hour">11am</h2>
-                        <img id="hour5icon" src="">
-                        <p class="anHourHeading" id="hour5temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour6hour">12pm</h2>
-                        <img id="hour6icon" src="">
-                        <p class="anHourHeading" id="hour6temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour7hour">1pm</h2>
-                        <img id="hour7icon" src="">
-                        <p class="anHourHeading" id="hour7temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour8hour">2pm</h2>
-                        <img id="hour8icon" src="">
-                        <p class="anHourHeading" id="hour8temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour9hour">3pm</h2>
-                        <img id="hour9icon" src="">
-                        <p class="anHourHeading" id="hour9temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour10hour">4pm</h2>
-                        <img id="hour10icon" src="">
-                        <p class="anHourHeading" id="hour10temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour11hour">5pm</h2>
-                        <img id="hour11icon" src="">
-                        <p class="anHourHeading" id="hour11temp"></p>
-                    </div>
-                    <div>
-                        <h2 class="anHourHeading" id="hour12hour">6pm</h2>
-                        <img id="hour12icon" src="">
-                        <p class="anHourHeading" id="hour12temp"></p>
-                    </div>
-                </div>
-            </section>
-            <section class="forecastSection">
-                <h1 class="moreWeatherHeading">Chance of Rain</h1>
-                <div>
-                    <div>
-                        <p class="anHourHeading">7am</p>
-                        <div>
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour1rain">%</p>
-                        </div>
-                        
-                    </div>
-                    <div>
-                        <p class="anHourHeading">8am</p>
-                        <div>
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour2rain">%</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="anHourHeading">9am</p>
-                        <div>                            
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour3rain">%</p>
-                        </div>
-                    </div>
-                    <div>                        
-                        <p class="anHourHeading">10am</p>
-                        <div>                            
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour4rain">%</p>
-                        </div>
-                    </div>
-                    <div>                        
-                        <p class="anHourHeading">11am</p>
-                        <div>
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour5rain">%</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="anHourHeading">12pm</p>
-                        <div>
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour6rain">%</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="anHourHeading">1pm</p>
-                        <div>
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour7rain">%</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="anHourHeading">2pm</p>
-                        <div>
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour8rain">%</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="anHourHeading">3pm</p>
-                        <div>
-                            <img class="anHourImg" src="images/rain.png">
-                            <p class="anHourHeading rainPercentageText" id="hour9rain">%</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <div>
-                    <p class="moreWeatherHeading">UV Index</p>
-                    <p class="weatherNumeric" id="uvIndex"></p>
-                </div>
-                <div>
-                    <p class="moreWeatherHeading">Humidity</p>
-                    <p class="weatherNumeric" id="humidity"></p>
-                </div>
-            </section>
-        </section> 
+    <div class="border md:col-start-4 md:row-start-3 md:col-span-1 col-span-2 col-start-3 row-start-6 flex flex-col justify-center rounded-md bg-white bg-opacity-20">
+        <h1 class="text-xl text-center pb-2">Air Quality</h1>
+        <p id="moreFour" class="text-center text-4xl"></p>
     </div>
     
+    
+</div>
+
+    
     <script src="public/js/main.js"></script>
+  
     
 </body>
 </html>
