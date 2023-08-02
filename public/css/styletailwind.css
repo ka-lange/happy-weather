@@ -4,6 +4,16 @@ body{
     background-repeat: no-repeat;
     color: black;
 }
+#hourlyTemp, #threeDayForecast{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+#hourlyTemp::-webkit-scrollbar, #threeDayForecast::-webkit-scrollbar {
+    display: none;
+}
 #downArrow{
     cursor: pointer;
 }
+
+    
+  
