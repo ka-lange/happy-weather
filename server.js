@@ -10,7 +10,6 @@ app.use(express.static(__dirname + '/public'));
 // require('dotenv').config({path: './config/.env'})
 
 //connectDB()  //initialize connecting the server to the database via config/database file
-app.use('/services', express.static('services'))
 
 
 app.get('/', (req, res) => {
